@@ -22,6 +22,8 @@ export class StellarService {
     this.server = server;
     this.keyPair = keyPair;
     this.stellarAccountId = keyPair.publicKey();
+
+    console.log(this.stellarAccountId);
   }
 
   async loadAccount() {
