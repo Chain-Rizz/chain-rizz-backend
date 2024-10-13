@@ -13,8 +13,27 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+model Tracking {
+  id String @id @default(uuid())
+
+  trackingId String @unique
+  status     String @default("PROCESSING")
+  data       String @default("")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum TransactionStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum FiatPaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
 }
